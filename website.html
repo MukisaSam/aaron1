@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaron — Graphic Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A0A0A;
+            --accent: #FF3366;
+            --secondary: #FFD700;
+            --light: #F8F8F8;
+            --mid: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Instrument Sans', -apple-system, sans-serif;
+            background: var(--light);
+            color: var(--primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Abril Fatface', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 3rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, #FF6B9D 100%);
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: 0;
+            animation: slideIn 1.2s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--mid);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Abril Fatface', serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -0.03em;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent);
+            display: block;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 600px;
+            color: var(--mid);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 51, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #E62959;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 51, 102, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Abril Fatface', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-item:nth-child(2) .portfolio-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .portfolio-item:nth-child(3) .portfolio-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .portfolio-item:nth-child(4) .portfolio-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .portfolio-item:nth-child(5) .portfolio-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .portfolio-item:nth-child(6) .portfolio-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .portfolio-image-placeholder {
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 700;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .view-project {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+        }
+
+        .portfolio-category {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-description {
+            color: var(--mid);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            border-radius: 12px;
+            padding: 4rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--secondary);
+            transform: translateX(10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-description {
+            color: var(--mid);
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--accent) 0%, #FF6B9D 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-text h3 {
+            font-family: 'Abril Fatface', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text p {
+            color: var(--mid);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-family: 'Abril Fatface', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--mid);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--primary);
+            color: white;
+            margin: 0;
+            max-width: 100%;
+            padding: 6rem 3rem;
+        }
+
+        .contact-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #contact .section-label {
+            color: var(--secondary);
+        }
+
+        #contact .section-title {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .contact-method-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2rem 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 4rem;
+            }
+
+            .hero-bg {
+                width: 70%;
+                clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services {
+                padding: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">Aaron</a>
+            <ul class="nav-links">
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-label">Graphic Designer</div>
+            <h1>
+                Visual Stories<br>
+                <span class="highlight">That Connect</span>
+            </h1>
+            <p class="hero-description">
+                Crafting compelling brand identities, stunning flyers, memorable business cards, and digital experiences that make your message impossible to ignore.
+            </p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Let's Collaborate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-header">
+            <div class="section-label">Recent Projects</div>
+            <h2 class="section-title">Featured Work</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">🎨</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Branding</div>
+                    <h3 class="portfolio-title">Urban Coffee Co.</h3>
+                    <p class="portfolio-description">Complete brand identity including logo, packaging, and marketing materials for a modern coffee chain.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">📱</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Web Design</div>
+                    <h3 class="portfolio-title">TechFlow App</h3>
+                    <p class="portfolio-description">Landing page design and UI/UX for a productivity application targeting remote teams.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">🎪</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Flyer Design</div>
+                    <h3 class="portfolio-title">Summer Music Festival</h3>
+                    <p class="portfolio-description">Eye-catching promotional materials for a three-day outdoor music festival.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">💼</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Business Cards</div>
+                    <h3 class="portfolio-title">Legal Partners LLC</h3>
+                    <p class="portfolio-description">Sophisticated business card collection for a boutique law firm with embossed finish.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">🌐</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Web Design</div>
+                    <h3 class="portfolio-title">Green Earth NGO</h3>
+                    <p class="portfolio-description">Website redesign for environmental nonprofit with interactive donation experience.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="portfolio-image-placeholder">✨</div>
+                    <div class="portfolio-overlay">
+                        <span class="view-project">VIEW PROJECT</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-category">Branding</div>
+                    <h3 class="portfolio-title">Luxe Beauty Spa</h3>
+                    <p class="portfolio-description">Elegant brand refresh with logo, color palette, and collateral for luxury spa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="services">
+            <div class="section-header">
+                <div class="section-label">What I Do</div>
+                <h2 class="section-title">Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Graphic Design</h3>
+                    <p class="service-description">From concept to completion, I create visually stunning graphics that capture attention and communicate your message effectively.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📄</div>
+                    <h3 class="service-title">Flyers & Posters</h3>
+                    <p class="service-description">Eye-catching promotional materials designed to drive engagement for your events, products, or services.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3 class="service-title">Business Cards</h3>
+                    <p class="service-description">Professional business card designs that make a lasting impression and reflect your brand's personality.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Web Design</h3>
+                    <p class="service-description">Modern, responsive websites and landing pages that look great on any device and convert visitors into customers.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏆</div>
+                    <h3 class="service-title">Branding</h3>
+                    <p class="service-description">Complete brand identity development including logos, color schemes, typography, and brand guidelines.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3 class="service-title">Social Media</h3>
+                    <p class="service-description">Engaging social media graphics and content templates that maintain consistency across all platforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <div class="section-label">Get to Know Me</div>
+            <h2 class="section-title">About Aaron</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-image">👨‍🎨</div>
+            <div class="about-text">
+                <h3>Transforming Ideas Into Visual Excellence</h3>
+                <p>
+                    With a passion for design that started in childhood, I've spent the last several years honing my craft and helping businesses bring their visions to life. I believe great design is more than just aesthetics—it's about telling stories, solving problems, and creating connections.
+                </p>
+                <p>
+                    Every project is an opportunity to push creative boundaries and deliver work that not only looks amazing but also achieves real business results. From startups to established brands, I approach each collaboration with fresh eyes and genuine enthusiasm.
+                </p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-content">
+            <div class="section-label">Let's Work Together</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-description">
+                Ready to start your next project? I'm always excited to hear about new opportunities and creative challenges. Let's create something amazing together.
+            </p>
+            <div class="contact-methods">
+                <a href="mailto:aaron@design.com" class="contact-method">
+                    <div class="contact-method-label">Email</div>
+                    <div class="contact-method-value">aaron@design.com</div>
+                </a>
+                <a href="tel:+256700000000" class="contact-method">
+                    <div class="contact-method-label">Phone</div>
+                    <div class="contact-method-value">+256 700 000 000</div>
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Instagram">📷</a>
+                <a href="#" class="social-link" title="Behance">🎨</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+                <a href="#" class="social-link" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Aaron. All rights reserved. Designed with passion.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
