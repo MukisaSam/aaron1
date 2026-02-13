@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaron — Graphic Designer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Aronet Creatives — Graphic Design & Digital Solutions</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #0A0A0A;
@@ -54,6 +57,19 @@
             color: var(--primary);
             text-decoration: none;
             letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text {
+            display: none;
         }
 
         .nav-links {
@@ -117,6 +133,7 @@
             from {
                 transform: translateX(100%);
             }
+
             to {
                 transform: translateX(0);
             }
@@ -145,6 +162,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -569,6 +587,143 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--mid);
+            transition: color 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-header {
+            padding: 3rem 2rem 2rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .modal-category {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Abril Fatface', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-details {
+            color: var(--mid);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-features {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .modal-features h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-features li {
+            color: var(--mid);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem 2rem;
+            border-top: 1px solid var(--light);
+            text-align: center;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-content {
@@ -627,13 +782,24 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-content">
-            <a href="#" class="logo">Aaron</a>
+            <a href="#" class="logo">
+                <svg width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background circle -->
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                    <!-- A letter -->
+                    <path d="M 25 70 L 40 25 L 55 70 M 32 50 L 48 50" stroke="#D4AF37" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Decorative accent -->
+                    <path d="M 60 35 Q 70 40 65 55" stroke="#C9A961" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">ARONET</span>
+            </a>
             <ul class="nav-links">
-                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -645,17 +811,18 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-label">Graphic Designer</div>
+            <div class="hero-label">Premium Design & Digital Solutions</div>
             <h1>
-                Visual Stories<br>
-                <span class="highlight">That Connect</span>
+                Where Creativity<br>
+                <span class="highlight">Meets Impact</span>
             </h1>
             <p class="hero-description">
-                Crafting compelling brand identities, stunning flyers, memorable business cards, and digital experiences that make your message impossible to ignore.
+                From stunning graphics to complete digital transformation—we craft visual identities and marketing
+                solutions that make your brand unforgettable and your message crystal clear.
             </p>
             <div class="cta-buttons">
-                <a href="#portfolio" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Let's Collaborate</a>
+                <a href="#portfolio" class="btn btn-primary">Explore Our Work</a>
+                <a href="#contact" class="btn btn-secondary">Start Your Project</a>
             </div>
         </div>
     </section>
@@ -663,91 +830,97 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="section-header">
-            <div class="section-label">Recent Projects</div>
-            <h2 class="section-title">Featured Work</h2>
+            <div class="section-label">Our Showcase</div>
+            <h2 class="section-title">Featured Projects</h2>
         </div>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
                     <div class="portfolio-image-placeholder">🎨</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
                     <div class="portfolio-category">Branding</div>
-                    <h3 class="portfolio-title">Urban Coffee Co.</h3>
-                    <p class="portfolio-description">Complete brand identity including logo, packaging, and marketing materials for a modern coffee chain.</p>
+                    <h3 class="portfolio-title">Premium Brand Identity</h3>
+                    <p class="portfolio-description">Complete visual identity system with logo, color palette, and brand
+                        guidelines for luxury brands.</p>
                 </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
                     <div class="portfolio-image-placeholder">📱</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">Web Design</div>
-                    <h3 class="portfolio-title">TechFlow App</h3>
-                    <p class="portfolio-description">Landing page design and UI/UX for a productivity application targeting remote teams.</p>
+                    <div class="portfolio-category">Digital Design</div>
+                    <h3 class="portfolio-title">E-Commerce Web Experience</h3>
+                    <p class="portfolio-description">Modern, responsive web design that converts visitors into customers
+                        with intuitive user experience.</p>
                 </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
-                    <div class="portfolio-image-placeholder">🎪</div>
+                    <div class="portfolio-image-placeholder">📢</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">Flyer Design</div>
-                    <h3 class="portfolio-title">Summer Music Festival</h3>
-                    <p class="portfolio-description">Eye-catching promotional materials for a three-day outdoor music festival.</p>
+                    <div class="portfolio-category">Print Marketing</div>
+                    <h3 class="portfolio-title">Event Flyer Campaign</h3>
+                    <p class="portfolio-description">High-impact promotional flyers that generate buzz and drive
+                        attendance for major events.</p>
                 </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
                     <div class="portfolio-image-placeholder">💼</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">Business Cards</div>
-                    <h3 class="portfolio-title">Legal Partners LLC</h3>
-                    <p class="portfolio-description">Sophisticated business card collection for a boutique law firm with embossed finish.</p>
+                    <div class="portfolio-category">Corporate Design</div>
+                    <h3 class="portfolio-title">Business Collateral Suite</h3>
+                    <p class="portfolio-description">Professional business cards, letterheads, and stationery that
+                        elevate brand presence.</p>
                 </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
                     <div class="portfolio-image-placeholder">🌐</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">Web Design</div>
-                    <h3 class="portfolio-title">Green Earth NGO</h3>
-                    <p class="portfolio-description">Website redesign for environmental nonprofit with interactive donation experience.</p>
+                    <div class="portfolio-category">Web & App Design</div>
+                    <h3 class="portfolio-title">Mobile App Interface</h3>
+                    <p class="portfolio-description">Sleek mobile UI/UX design with focus on user engagement and
+                        seamless interaction.</p>
                 </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" onclick="openProjectModal(this)">
                 <div class="portfolio-image">
                     <div class="portfolio-image-placeholder">✨</div>
                     <div class="portfolio-overlay">
-                        <span class="view-project">VIEW PROJECT</span>
+                        <span class="view-project">VIEW DETAILS</span>
                     </div>
                 </div>
                 <div class="portfolio-info">
-                    <div class="portfolio-category">Branding</div>
-                    <h3 class="portfolio-title">Luxe Beauty Spa</h3>
-                    <p class="portfolio-description">Elegant brand refresh with logo, color palette, and collateral for luxury spa.</p>
+                    <div class="portfolio-category">Social Media</div>
+                    <h3 class="portfolio-title">Social Campaign Assets</h3>
+                    <p class="portfolio-description">Engaging graphics and templates optimized for Instagram, Facebook,
+                        LinkedIn, and beyond.</p>
                 </div>
             </div>
         </div>
@@ -757,44 +930,50 @@
     <section id="services">
         <div class="services">
             <div class="section-header">
-                <div class="section-label">What I Do</div>
-                <h2 class="section-title">Services</h2>
+                <div class="section-label">Creative Solutions</div>
+                <h2 class="section-title">Our Services</h2>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🎨</div>
                     <h3 class="service-title">Graphic Design</h3>
-                    <p class="service-description">From concept to completion, I create visually stunning graphics that capture attention and communicate your message effectively.</p>
+                    <p class="service-description">Stunning visual designs that communicate your brand's essence—from
+                        illustrations to layouts, we create designs that captivate.</p>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">📄</div>
-                    <h3 class="service-title">Flyers & Posters</h3>
-                    <p class="service-description">Eye-catching promotional materials designed to drive engagement for your events, products, or services.</p>
+                    <div class="service-icon">📢</div>
+                    <h3 class="service-title">Print Marketing</h3>
+                    <p class="service-description">Eye-catching flyers, posters, and brochures designed to grab
+                        attention and drive engagement for your campaigns.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">💳</div>
-                    <h3 class="service-title">Business Cards</h3>
-                    <p class="service-description">Professional business card designs that make a lasting impression and reflect your brand's personality.</p>
+                    <h3 class="service-title">Branding</h3>
+                    <p class="service-description">Complete brand development—logos, color systems, typography, and
+                        guidelines that define your unique identity.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🌐</div>
                     <h3 class="service-title">Web Design</h3>
-                    <p class="service-description">Modern, responsive websites and landing pages that look great on any device and convert visitors into customers.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🏆</div>
-                    <h3 class="service-title">Branding</h3>
-                    <p class="service-description">Complete brand identity development including logos, color schemes, typography, and brand guidelines.</p>
+                    <p class="service-description">Modern, responsive websites and landing pages optimized for
+                        conversion and delivering seamless user experiences.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">📱</div>
-                    <h3 class="service-title">Social Media</h3>
-                    <p class="service-description">Engaging social media graphics and content templates that maintain consistency across all platforms.</p>
+                    <h3 class="service-title">Digital Solutions</h3>
+                    <p class="service-description">App interfaces, digital campaigns, and interactive experiences that
+                        engage users and drive business growth.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📸</div>
+                    <h3 class="service-title">Content Creation</h3>
+                    <p class="service-description">Social media graphics, video thumbnails, and promotional content that
+                        elevates your online presence across all platforms.</p>
                 </div>
             </div>
         </div>
@@ -803,31 +982,36 @@
     <!-- About Section -->
     <section id="about">
         <div class="section-header">
-            <div class="section-label">Get to Know Me</div>
-            <h2 class="section-title">About Aaron</h2>
+            <div class="section-label">About Us</div>
+            <h2 class="section-title">Aronet Creatives Story</h2>
         </div>
         <div class="about-content">
-            <div class="about-image">👨‍🎨</div>
+            <div class="about-image">🎯</div>
             <div class="about-text">
-                <h3>Transforming Ideas Into Visual Excellence</h3>
+                <h3>Transforming Vision Into Visual Excellence</h3>
                 <p>
-                    With a passion for design that started in childhood, I've spent the last several years honing my craft and helping businesses bring their visions to life. I believe great design is more than just aesthetics—it's about telling stories, solving problems, and creating connections.
+                    At Aronet Creatives, we believe that exceptional design is the language of business success. We've
+                    dedicated ourselves to crafting powerful visual experiences that don't just look beautiful—they
+                    drive real results for our clients.
                 </p>
                 <p>
-                    Every project is an opportunity to push creative boundaries and deliver work that not only looks amazing but also achieves real business results. From startups to established brands, I approach each collaboration with fresh eyes and genuine enthusiasm.
+                    Whether you're a startup finding your voice, an established brand seeking a refresh, or an
+                    enterprise needing comprehensive digital solutions, we bring creativity, strategy, and technical
+                    expertise to every project. We're passionate about understanding your unique challenges and
+                    delivering designs that exceed expectations.
                 </p>
                 <div class="stats">
                     <div class="stat">
-                        <span class="stat-number">200+</span>
-                        <span class="stat-label">Projects</span>
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Delivered</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">150+</span>
-                        <span class="stat-label">Happy Clients</span>
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">Satisfied Clients</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Years Experience</span>
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Years Excellence</span>
                     </div>
                 </div>
             </div>
@@ -837,36 +1021,134 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="contact-content">
-            <div class="section-label">Let's Work Together</div>
-            <h2 class="section-title">Get In Touch</h2>
+            <div class="section-label">Let's Connect</div>
+            <h2 class="section-title">Ready to Create Magic?</h2>
             <p class="contact-description">
-                Ready to start your next project? I'm always excited to hear about new opportunities and creative challenges. Let's create something amazing together.
+                Have a project in mind? We'd love to hear about it. Reach out via WhatsApp, email, or explore our
+                portfolio. Let's turn your vision into a stunning reality.
             </p>
             <div class="contact-methods">
-                <a href="mailto:aaron@design.com" class="contact-method">
+                <a href="mailto:aronetcreatives@gmail.com" class="contact-method">
                     <div class="contact-method-label">Email</div>
-                    <div class="contact-method-value">aaron@design.com</div>
+                    <div class="contact-method-value">aronetcreatives@gmail.com</div>
                 </a>
-                <a href="tel:+256700000000" class="contact-method">
-                    <div class="contact-method-label">Phone</div>
-                    <div class="contact-method-value">+256 700 000 000</div>
+                <a href="https://wa.me/256760601233?text=Hi%20Aronet%20Creatives%2C%20I%20would%20like%20to%20discuss%20a%20design%20project"
+                    target="_blank" class="contact-method">
+                    <div class="contact-method-label">WhatsApp</div>
+                    <div class="contact-method-value">+256 760 601 233</div>
+                </a>
+                <a href="https://wa.me/256700969839?text=Hi%20Aronet%20Creatives%2C%20I%20would%20like%20to%20discuss%20a%20design%20project"
+                    target="_blank" class="contact-method">
+                    <div class="contact-method-label">WhatsApp</div>
+                    <div class="contact-method-value">+256 700 969 839</div>
                 </a>
             </div>
             <div class="social-links">
-                <a href="#" class="social-link" title="Instagram">📷</a>
-                <a href="#" class="social-link" title="Behance">🎨</a>
-                <a href="#" class="social-link" title="LinkedIn">💼</a>
-                <a href="#" class="social-link" title="Twitter">🐦</a>
+                <a href="https://wa.me/256760601233?text=Hi%20Aronet%20Creatives%2C%20I%20would%20like%20to%20discuss%20a%20design%20project"
+                    target="_blank" class="social-link" title="WhatsApp">💬</a>
+                <a href="mailto:aronetcreatives@gmail.com" class="social-link" title="Email">📧</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Aaron. All rights reserved. Designed with passion.</p>
+        <p>&copy; 2026 Aronet Creatives. All rights reserved. Crafting excellence in every pixel.</p>
     </footer>
 
     <script>
+        // Project modal details
+        const projectDetails = {
+            0: {
+                title: "Premium Brand Identity",
+                category: "Branding",
+                description: "Complete visual identity system with logo, color palette, typography, and brand guidelines for luxury brands seeking market distinction.",
+                details: "This project involved developing a comprehensive branding system for a high-end luxury company. We created a sophisticated logo that conveys elegance and professionalism, developed a curated color palette, selected premium typefaces, and established detailed brand guidelines to ensure consistency across all touchpoints."
+            },
+            1: {
+                title: "E-Commerce Web Experience",
+                category: "Digital Design",
+                description: "Modern, responsive web design optimized for conversion with intuitive navigation and compelling product presentation.",
+                details: "We designed and developed a complete e-commerce platform with responsive layouts, smooth user flows, and optimized checkout experience. The design prioritizes user engagement while maintaining brand consistency and driving sales conversions."
+            },
+            2: {
+                title: "Event Flyer Campaign",
+                category: "Print Marketing",
+                description: "High-impact promotional flyers designed to generate buzz and drive attendance for major corporate and social events.",
+                details: "Our team created vibrant, attention-grabbing flyers that clearly communicate event details while maintaining visual hierarchy. These materials were distributed digitally and in print, resulting in increased event attendance and engagement."
+            },
+            3: {
+                title: "Business Collateral Suite",
+                category: "Corporate Design",
+                description: "Professional business cards, letterheads, and stationery that elevate brand presence and create lasting impressions.",
+                details: "We developed a complete corporate identity package including premium business cards with embossed effects, custom letterhead designs, and coordinating stationery. Each piece reinforces the company's professional image and brand values."
+            },
+            4: {
+                title: "Mobile App Interface",
+                category: "Web & App Design",
+                description: "Sleek mobile UI/UX design focused on intuitive navigation and seamless user interaction for maximum engagement.",
+                details: "This project involved creating a complete mobile application interface with focus on user experience. We designed intuitive navigation flows, modern visual elements, and interactive components that enhance user engagement and satisfaction."
+            },
+            5: {
+                title: "Social Campaign Assets",
+                category: "Social Media",
+                description: "Engaging graphics and templates optimized for Instagram, Facebook, LinkedIn, and other social media platforms.",
+                details: "We created a library of social media content including post graphics, stories, video thumbnails, and promotional banners. All assets are optimized for different platforms and designed to maximize engagement and brand consistency."
+            }
+        };
+
+        function openProjectModal(element) {
+            const items = document.querySelectorAll('.portfolio-item');
+            const index = Array.from(items).indexOf(element);
+            const project = projectDetails[index];
+
+            const modalHTML = `
+                <div class="modal-overlay" onclick="closeProjectModal()">
+                    <div class="modal-content" onclick="event.stopPropagation()">
+                        <button class="modal-close" onclick="closeProjectModal()">✕</button>
+                        <div class="modal-header">
+                            <div class="modal-category">${project.category}</div>
+                            <h2 class="modal-title">${project.title}</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p class="modal-description">${project.description}</p>
+                            <p class="modal-details">${project.details}</p>
+                            <div class="modal-features">
+                                <h3>Key Highlights</h3>
+                                <ul>
+                                    <li>✓ Custom, unique design tailored to client needs</li>
+                                    <li>✓ Strategic approach to visual communication</li>
+                                    <li>✓ High-quality execution and attention to detail</li>
+                                    <li>✓ Delivered on time and exceeding expectations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#contact" class="btn btn-primary" onclick="closeProjectModal()">Ready to Start Your Project?</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            const modal = document.querySelector('.modal-overlay');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeProjectModal();
+            }
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -885,7 +1167,7 @@
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-links a');
-            
+
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -904,4 +1186,5 @@
         });
     </script>
 </body>
+
 </html>
